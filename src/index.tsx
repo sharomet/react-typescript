@@ -1,14 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import App from './App';
-import './scss/app.scss';
 import * as serviceWorker from './serviceWorker';
+import App from './App';
+import Home from './pages/Home';
+import PostList from './pages/posts/PostList';
+import PostItem from './pages/posts/PostItem';
+
+
+import './scss/app.scss';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <React.StrictMode>
+      <App>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/posts" component={PostList} />
+          <Route path='/posts/:id' component={PostItem} />
+        </Switch>
+      </App>
+    </React.StrictMode>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
